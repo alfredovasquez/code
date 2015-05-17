@@ -1,0 +1,63 @@
+STEP BY STEP GUIDE TO SET AND CONFIGURE THE SENSOR OBSERVATION SERVICE (SOS) AND WEB PROCESSING SERVICE (WPS) REQUIRED FOR SHARING AND GEOSTATISTICAL PROCESSING OF SENSOR DATA
+Version 1.0
+03-04-2015
+Alfredo Vasquez
+
+
+Pre-required framework:
+•	Download and install postgreSQL 9.3.5-3-win-x64
+o	Set password
+o	Set port, e.g. 5432
+o	Set host, e.g. local
+o	Set Apache port, e.g. 8081
+o	Set listening port, e.g. 6432
+•	Download and install PyCharm IDE or Python 2.7.8
+•	Download and install PyScripter –v2.5.3-x64
+•	Download and install psycopg2
+•	Download and install R and R Studio (R-3.1.2-win)
+
+Install and configure Apache Tomcat 8:
+•	Download and install Java Development Kit JDK
+•	Download and install Java SE Runtime Environment JRE
+•	Download and install Apache Tomcat binary distribution (as a service)
+o	Set server shutdown port, e.g. 8005
+o	Set http connector 11.1 port, e.g. 8080
+o	Set AJP connector 11.3 port, e.g. 8009
+o	Set windows service name, e.g. ‘tomcat8’
+o	Create environmental variable CATALINA_HOME
+o	Create environmental variable JRE_HOME
+o	Create environmental variable JAVA_HOME
+o	Add the above variables to PATH with the ‘bin’ folder
+o	Create an user in CATALINA_HOME \conf\tomcat_users
+•	Configure Apache Maven
+o	Download binaries
+o	Copy binaries to CATALINA_HOME
+o	Create environmental variable M2_HOME (M2_HOME\bin)
+o	Add M2_HOME to PATH
+
+Install and configure 52o North Sensor Observation Service (SOS):
+•	Download 52n-sensorweb-sos4.1.0
+•	Open 52n-sos-4.1.0
+•	Open ‘bin’
+•	Open ‘webapp’
+•	Open ‘target’
+•	Deploy 52n-sos-webapp.war from Apache Tomcat Manager
+•	Restart Tomcat
+•	Configure SOS Database
+o	Go to install
+o	Go to start
+o	Select DBMS, e.g. PostgreSQL-postGIS
+o	Set login credentials for the admin panel 
+o	Reset DBMS
+
+Install and configure 52o North Web Processing Service (WPS):
+•	Deploy 52n-wps-webapp-3.3.1.war from Apache Tomcat Manager
+•	Replace WEB-INF folder in CATALINA_HOME\webapps\wps with WEB-INF folder from wps-3.3.0-geotools-package, in order to enable R Scripts uploading
+
+Install and configure INTAMAP server and client:
+•	Deploy intamap.war from Apache Tomcat Manager
+•	Install INTAMAP client for Windows
+o	Download and install MS Net Framework 3.5
+o	Download and install executable package: SeeSharp-0.5.zip
+o	Execute SeeSharp
+
